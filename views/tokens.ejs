@@ -1,0 +1,102 @@
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: Sans-serif;
+  color: rgba(0,0,0,0.8);
+  font-size: 14px;
+}
+nav {
+  display: flex;
+  padding: 10px;
+  /*
+  background: rgba(0,0,0,0.8);
+  */
+  background: #313442;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+nav a.brand {
+  font-weight: bold;
+  font-size: 25px;
+  /*
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  */
+}
+/*
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+*/
+.row:nth-child(odd) {
+  background: rgba(0,0,0,0.03);
+}
+.row {
+  display: flex;
+  padding: 8px;
+}
+.row .col {
+}
+.row .image {
+  width: 50px;
+  margin-right: 10px;
+}
+.row .image img {
+  width: 100%;
+}
+.row .flexible, nav .flexible {
+  flex-grow: 1;
+}
+.creators {
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-left: 4px solid #313442;
+}
+.creators a {
+  color: rgba(0,0,0,0.5);
+  display: block;
+}
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+h2 {
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+<div class='container'>
+<nav>
+<a href="/tokens" class='brand'>rarepress</a>
+<div class='flexible'></div>
+</nav>
+<% result.forEach((token) => { %>
+  <div class='row'>
+    <div class='image'>
+      <img src="<%=token.image%>">
+    </div>
+    <div class='col flexible'>
+      <h2><%=token.name%></h2>
+      <div><%=token.description%></div>
+      <div class='creators'>
+        <div>created by:</div>
+        <% token.creators.forEach((c) => { %>
+          <a href="/users/<%=c%>/tokens"><%=c%></a>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+<% }) %>
+</div>
+</body>
+</html>
